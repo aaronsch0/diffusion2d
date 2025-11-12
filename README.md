@@ -18,6 +18,11 @@ Key points about the model and the code:
 - The code computes a stable timestep `dt` for the explicit scheme from the grid spacings `dx`, `dy` and the thermal diffusivity `D`.
 - Parameters such as `dx`, `dy`, `D` and the number of timesteps can be changed by the user.
 
+Code layout and functions (current repository state):
+
+- `diffusion2d/diffusion2d/diffusion2d.py` – main solver module. It defines `solve(w,h,dx,dy,D,T_cold,T_hot)` and also can be executed as a script (it calls `solve(...)` in the `if __name__ == "__main__"` guard).
+- `diffusion2d/diffusion2d/output.py` – plotting helper functions that the solver uses to create and finalize subplots.
+
 Output:
 
 The script produces four snapshots of the temperature distribution at selected timesteps and arranges them in a single figure with a shared colorbar so the diffusion of heat is easy to observe.
@@ -63,16 +68,31 @@ If you later want to turn this project into a real Python package, follow the st
 
 ## Running this package
 
-Run the example script from the repository root:
+Run the example script from the repository root. Note: in this repository the solver script is placed in the `diffusion2d/` subfolder, so run:
 
 ```bash
-python3 diffusion2d.py
+python3 diffusion2d/diffusion2d/diffusion2d.py
+```
+
+Alternatively you can import and call the solver from Python:
+
+```python
+from diffusion2d.diffusion2d import solve
+# call with default example parameters
+solve(10., 10., 0.1, 0.1, 4., 300, 700)
 ```
 
 What to expect:
 
+
 - The script prints the computed timestep `dt`.
 - A plotting window opens showing four subplots (temperature fields at different times) and a shared colorbar.
+
+Notes about plotting helpers:
+
+- `diffusion2d/diffusion2d/output.py` provides two convenience functions used by the solver:
+	- `create_plot(fig_counter, T_cold, T_hot, dt, u, n, fig)` – creates and configures a single subplot for time index `n` and returns the `AxesImage` (`im`).
+	- `output_plots(im, fig)` – finalizes the figure (adds shared colorbar and shows the plot window).
 
 Tips:
 
@@ -101,8 +121,3 @@ If you reuse this example in teaching or publications, please cite the book chap
 
 - "Learning Scientific Programming with Python", chapter 7 (two-dimensional diffusion example).
 - scipython.com: The two-dimensional diffusion equation (https://scipython.com/book/chapter-7-matplotlib/examples/the-two-dimensional-diffusion-equation/)
-
----
-
-If you want, I can next add a simple CLI (`argparse`), an option to save figures automatically, or a small test that verifies `create_plot` returns an `AxesImage`.
-
