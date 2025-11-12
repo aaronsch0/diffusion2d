@@ -1,11 +1,5 @@
 # diffusion2d
 
-## Instructions for students
-
-Please follow the instructions in [pypi_exercise.md](https://github.com/Simulation-Software-Engineering/Lecture-Material/blob/main/03_building_and_packaging/pypi_exercise.md).
-
-The code used in this exercise is based on [Chapter 7 of the book "Learning Scientific Programming with Python"](https://scipython.com/book/chapter-7-matplotlib/examples/the-two-dimensional-diffusion-equation/).
-
 ## Description
 
 This small Python project solves the two-dimensional diffusion (heat) equation on a square plate using a finite-difference scheme.
@@ -52,23 +46,21 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-4. Update pip and install packaging tools (if you want to build/upload a package):
-
-```bash
-python3 -m pip install --upgrade pip build twine
-```
-
 5. Install dependencies:
 
 ```bash
 python3 -m pip install numpy matplotlib
 ```
 
-If you later want to turn this project into a real Python package, follow the steps in `pypi_exercise.md`.
+6. Install the package (optional):
+
+```bash
+pip install diffusion2d
+```
 
 ## Running this package
 
-Run the example script from the repository root. Note: in this repository the solver script is placed in the `diffusion2d/` subfolder, so run:
+Run the script from the repository root. Note: in this repository the solver script is placed in the `diffusion2d/` subfolder, so run:
 
 ```bash
 python3 diffusion2d/diffusion2d/diffusion2d.py
@@ -84,7 +76,6 @@ solve(10., 10., 0.1, 0.1, 4., 300, 700)
 
 What to expect:
 
-
 - The script prints the computed timestep `dt`.
 - A plotting window opens showing four subplots (temperature fields at different times) and a shared colorbar.
 
@@ -98,22 +89,6 @@ Tips:
 
 - Try changing `dx`, `dy` and `D` inside `diffusion2d.py` and observe how `dt` and runtime change. Smaller `dx`/`dy` increase the grid size and therefore the computation time.
 - The script computes `dt` to satisfy the stability condition for the explicit scheme; if you change parameters, check `dt` to ensure stability.
-
-## Exercises
-
-Follow these exercise steps (as in the assignment):
-
-1. Fork this repository and clone your fork locally.
-2. Open `diffusion2d.py` and read through the code to understand the numerical method and the implementation.
-3. Check that your Python version is >= 3.6 and update Python if necessary.
-4. Install `pip`, `build` and `twine` if you plan to create a package.
-5. Install NumPy and Matplotlib as described above.
-6. Run the script with `python3 diffusion2d.py` and save the generated figure to your machine.
-7. Experiment with `dx`, `dy` and `D` and answer the following questions:
-	- How does `dt` change when you change `dx`/`dy`?
-	- How does the runtime change when the grid is refined?
-	- How does the appearance of the diffusion in the plots change?
-8. (Optional) Add simple CLI options with `argparse` so the user can override `dx`, `dy` and `D` from the command line.
 
 ## Citing
 

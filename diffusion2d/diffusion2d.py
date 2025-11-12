@@ -22,7 +22,7 @@ T_cold = 300
 T_hot = 700
 
 
-def solve(w,h,dx,dy,D,T_cold,T_hot):
+def solve(w = 10,h = 10,dx = 0.1,dy = 0.1,D = 4.,T_cold = 300,T_hot = 700):
     # Number of discrete mesh points in X and Y directions
     nx, ny = int(w / dx), int(h / dy)
 

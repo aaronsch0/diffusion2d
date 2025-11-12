@@ -1,10 +1,11 @@
 #copy structur from https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html
 [build-system]
-requires = ["setuptools", "setuptools-scm"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "aschoene_diffusion2d"
+name = "schoenan_diffusion2d"
+version = "0.0.4"
 authors = [
     {name = "Aaron Schöne", email = "st183829@stud.uni-stuttgart.de"},
 ]
@@ -18,7 +19,9 @@ classifiers = [
 ]
 dependencies = [
     "numpy>=1.20",
-    "matplotlib>=3.1",
-    "python>=3.6"
+    "matplotlib>=3.1"
 ]
-dynamic = ["version"]
+
+[tool.setuptools.packages.find]
+include = ["diffusion2d*", "README.md"]
+exclude = ["diffusion*"]
