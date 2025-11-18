@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "schoenan_diffusion2d"
-version = "0.0.4"
+version = "0.0.10"
 authors = [
     {name = "Aaron Schöne", email = "st183829@stud.uni-stuttgart.de"},
 ]
@@ -23,5 +23,5 @@ dependencies = [
 ]
 
 [tool.setuptools.packages.find]
-include = ["diffusion2d*", "README.md"]
-exclude = ["diffusion*"]
+include = ["schoenan_diffusion2d*"]
+exclude = ["diffusion*", "d_test*", "__pycache__"]

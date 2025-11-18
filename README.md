@@ -23,7 +23,7 @@ The script produces four snapshots of the temperature distribution at selected t
 
 ## Installing the package
 
-This repository is an exercise project and does not ship as an installable package by default. To run the example you only need Python (>= 3.6) and the required libraries (NumPy and Matplotlib).
+To run the example you only need Python (>= 3.6) and the required libraries (NumPy and Matplotlib).
 
 Recommended steps (macOS / Linux / WSL):
 
@@ -52,10 +52,10 @@ source .venv/bin/activate
 python3 -m pip install numpy matplotlib
 ```
 
-6. Install the package (optional):
+6. Install the package:
 
 ```bash
-pip install diffusion2d
+pip install -i https://test.pypi.org/simple/ schoenan-diffusion2d==0.0.10
 ```
 
 ## Running this package

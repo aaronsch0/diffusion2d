@@ -1,3 +1,9 @@
 diffusion/
 
 *.png
+
+# Python cache and virtualenv
+__pycache__/
+.venv/
+.pytest_cache/
+.gitignore
